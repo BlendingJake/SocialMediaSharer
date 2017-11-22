@@ -57,6 +57,29 @@ function sms_the_icon($icon, $is_icon_url) {
     <?php endif;
 }
 
+// get function output
+function sms_function_output_as_str($function, $param=null) {
+    ob_start();
+
+    if ($param)
+        $function($param);
+    else
+        $function();
+
+    $out = ob_get_contents();
+    ob_end_clean();
+
+    return $out;
+}
+
+// check if there is a need for an href attribute, if so call hook associated and return href
+function sms_determine_href_tag($ops) {
+    if (isset($ops['href_action']) && has_action($ops['href_action']))
+        return " href='" . sms_function_output_as_str('do_action', $ops['href_action']) . "'";
+
+    return " ";
+}
+
 // add default options
 function sms_add_default_options() {
     if (!has_action("register_social_media_option"))
@@ -76,6 +99,21 @@ function sms_add_default_options() {
             'priority' => -1,
             'misc' => [],
             'wp_head' => 'sms_facebook_include_api'
+        ],
+        "twitter" => [
+            'options' => [
+                'icon' => 'twitter',
+                'display_panel' => 'twitter_display_panel',
+                'save_panel' => 'twitter_save_panel',
+                'display' => '',
+                'is_icon_url' => false,
+                'href_action' => 'twitter_generate_href',
+                'onclick' => 'openTwitterDialog(this, event)',
+                'tag_extras' => 'target="_blank"'
+            ],
+            'fields' => ['message' => ''],
+            'priority' => -1,
+            'misc' => [],
         ]
     ];
 
@@ -97,7 +135,11 @@ function sms_generate_frontend() {
             <?php if ($ops['display']) :
                 do_action($ops['display']);
             else : ?>
-                <a class="sms-platform" onclick="<?php echo $ops['onclick'];?>">
+                <a class="sms-platform"
+                   onclick="<?php if (isset($ops['onclick'])) {echo $ops['onclick'];}?>"
+                    <?php echo sms_determine_href_tag($ops);
+                    if (isset($ops['tag_extras'])) {echo " " . $ops['tag_extras'];}?>
+                >
                     <?php sms_the_icon($ops['icon'], $ops['is_icon_url']); ?>
                 </a>
             <?php endif; ?>

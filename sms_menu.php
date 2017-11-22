@@ -2,15 +2,19 @@
 function sms_menu() {
     sms_save_fields();
     ?>
-    <div class="sms-menu-outer>">
-        <header class="sms-menu-header">
-            <h1><?php echo sms_get_name(); ?></h1>
-        </header>
+    <form class="sms-form" action="" method="POST">
+        <div class="sms-menu-outer>">
+            <header class="sms-menu-header">
+                <h1><?php echo sms_get_name(); ?></h1>
+            </header>
 
-        <div class="sms-fields-outer">
-            <?php sms_display_fields(); ?>
+            <div class="sms-fields-outer">
+                <?php sms_display_fields(); ?>
+            </div>
         </div>
-    </div>
+
+        <button type="submit">Save Changes</button>
+    </form>
     <?php
 }
 
@@ -29,8 +33,7 @@ function sms_save_fields() {
 function sms_display_fields() {
     $options = sms_get_option(REGISTERED_OPTIONS, []);
 
-    foreach ($options as $name=>$option) {
-        ?>
+    foreach ($options as $name=>$option) : ?>
         <div class="sms-option-outer">
             <header class="sms-option-header">
                 <a class="sms-icon">
@@ -39,10 +42,12 @@ function sms_display_fields() {
                 <a class="sms-option-name"><?php echo ucwords($name); ?></a>
             </header>
 
-            <div class="sms-option-fields">
-                <?php if (has_action($option['display_panel'])) {do_action($option['display_panel']);} ?>
-            </div>
+            <?php if (has_action($option['display_panel'])) : ?>
+                <div class="sms-option-fields">
+                    <?php do_action($option['display_panel']); ?>
+                </div>
+            <?php endif; ?>
         </div>
-        <?php
-    }
+
+    <?php endforeach;
 }

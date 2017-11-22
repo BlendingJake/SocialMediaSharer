@@ -32,6 +32,7 @@ function sms_set_option_priority($name, $priority) {
 }
 
 // default option actions
+// FACEBOOK
 function sms_facebook_display_panel() {
     return;
 }
@@ -57,3 +58,40 @@ function sms_facebook_include_api() {
     </script>
     <?php
 }
+
+// TWITTER
+function sms_twitter_generate_href() {
+    $message = "Check out this neat article on " . get_bloginfo('name') . "!";
+    $url = get_the_permalink();
+    $base_url = "https://twitter.com/home?status=";
+
+    echo $base_url . urlencode($message . " " . $url);
+}
+function sms_twitter_meta() {
+    $featured_id = get_post_thumbnail_id();
+    if ($featured_id !== "") :
+        $src = wp_get_attachment_image_src($featured_id, 'full')[0]; ?>
+        <meta name="twitter:image" content="<?php echo $src;?>">
+    <?php endif?>
+    <?php
+}
+function sms_twitter_display_panel() {
+    $fields = sms_get_option_fields("twitter");
+    ?>
+    <label for="twitter-message">Twitter Message</label>
+    <textarea name="twitter-message" id="twitter-message" rows="4" cols="50"><?php echo $fields['message'];?></textarea>
+    <?php
+}
+function sms_twitter_save_panel() {
+    $fields = sms_get_option_fields("twitter");
+    if (isset($_POST['twitter-message'])) {
+        $fields['message'] = $_POST['twitter-message'];
+    }
+
+    sms_update_option_fields('twitter', $fields);
+}
+
+add_action('wp_head', 'sms_twitter_meta');
+add_action('twitter_generate_href', 'sms_twitter_generate_href');
+add_action('twitter_display_panel', 'sms_twitter_display_panel');
+add_action('twitter_save_panel', 'sms_twitter_save_panel');
