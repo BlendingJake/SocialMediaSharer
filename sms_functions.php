@@ -3,7 +3,7 @@
 function sms_get_option($name, $default_value=[]) {
     $options = get_option(OPTIONS, []);
 
-    if (key_exists($name, $options))
+    if (isset($options[$name]))
         return $options[$name];
     else
         return $default_value;
@@ -24,10 +24,18 @@ function sms_get_name() {
 function sms_get_option_fields($name, $default_value=[]) {
     $options = sms_get_option(OPTION_FIELDS, []);
 
-    if (key_exists($name, $options))
+    if (isset($options[$name]))
         return $options[$name];
     else
         return $default_value;
+}
+function sms_get_option_field($option_name, $field_name, $default_value="") {
+    $fields = sms_get_option_fields($option_name);
+
+    if (isset($fields[$field_name]))
+        return $fields[$field_name];
+
+    return $default_value;
 }
 function sms_update_option_fields($name, $fields) {
     $options = sms_get_option(OPTION_FIELDS, []);

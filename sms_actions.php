@@ -61,19 +61,11 @@ function sms_facebook_include_api() {
 
 // TWITTER
 function sms_twitter_generate_href() {
-    $message = "Check out this neat article on " . get_bloginfo('name') . "!";
+    $message = sms_get_option_field('twitter', 'message');
     $url = get_the_permalink();
-    $base_url = "https://twitter.com/home?status=";
+    $base_url = "https://twitter.com/intent/tweet?text=";
 
     echo $base_url . urlencode($message . " " . $url);
-}
-function sms_twitter_meta() {
-    $featured_id = get_post_thumbnail_id();
-    if ($featured_id !== "") :
-        $src = wp_get_attachment_image_src($featured_id, 'full')[0]; ?>
-        <meta name="twitter:image" content="<?php echo $src;?>">
-    <?php endif?>
-    <?php
 }
 function sms_twitter_display_panel() {
     $fields = sms_get_option_fields("twitter");
@@ -91,7 +83,6 @@ function sms_twitter_save_panel() {
     sms_update_option_fields('twitter', $fields);
 }
 
-add_action('wp_head', 'sms_twitter_meta');
 add_action('twitter_generate_href', 'sms_twitter_generate_href');
 add_action('twitter_display_panel', 'sms_twitter_display_panel');
 add_action('twitter_save_panel', 'sms_twitter_save_panel');
