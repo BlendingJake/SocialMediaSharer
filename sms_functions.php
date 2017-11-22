@@ -157,3 +157,8 @@ function sms_generate_frontend() {
     </div>
     <?php
 }
+
+// cleans text so it can be used for an id in html
+function sms_clean_for_id($text) {
+    return preg_replace("/[^-a-zA-Z0-9_]/", "", $text);
+}

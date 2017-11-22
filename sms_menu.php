@@ -63,13 +63,13 @@ function sms_display_fields() {
     <section class="sms-fields-group">
     <?php foreach ($options as $name=>$option) : ?>
         <div class="sms-option-outer">
-            <div class="sms-option-header" id="<?php echo $name;?>"
+            <div class="sms-option-header" id="<?php echo sms_clean_for_id($name);?>"
                  onclick="/* fancy version to keep click checkbox from working*/
                          if (!$(event.target).is('input')){
-                             $('#<?php echo $name . "_fields";?>').toggle();
+                             $('#<?php echo sms_clean_for_id($name) . "_fields";?>').toggle();
                          }">
 
-                <input type="checkbox"  name="<?php echo $name;?>"
+                <input type="checkbox"  name="<?php echo sms_clean_for_id($name);?>"
                     <?php echo ($option['active'] ? 'checked' : '');?>>
 
                 <a class="sms-icon">
@@ -79,7 +79,7 @@ function sms_display_fields() {
             </div>
 
             <?php if (has_action($option['display_panel'])) : ?>
-                <div class="sms-option-fields" style="display: none;" id="<?php echo $name . "_fields";?>">
+                <div class="sms-option-fields" style="display: none;" id="<?php echo sms_clean_for_id($name) . "_fields";?>">
                     <?php do_action($option['display_panel']); ?>
                 </div>
             <?php endif; ?>
