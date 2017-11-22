@@ -24,8 +24,8 @@ function sms_activation() {
         'name' => 'Social Media Sharer',
         'version' => [0, 0, 1],
 
-        'enqueue_font_awesome' => true,
-        'enqueue_jquery' => true,
+        'enqueue_font_awesome' => false,
+        'enqueue_jquery' => false,
         'icon_only' => true,
 
         // registered options
