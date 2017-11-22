@@ -70,7 +70,7 @@ function sms_add_default_options() {
                 'save_panel' => 'facebook_save_panel',
                 'display' => '',
                 'is_icon_url' => false,
-                'onclick' => ''
+                'onclick' => 'openFacebookDialog()'
             ],
             'fields' => [],
             'priority' => -1,
@@ -83,7 +83,7 @@ function sms_add_default_options() {
         do_action('register_social_media_option', $name, $ops['options'], $ops['fields'], $ops['priority'],
             $ops['misc']);
 
-        if ($ops['wp_head'])
+        if (isset($ops['wp_head']))
             add_action('wp_head', $ops['wp_head']);
     }
 }

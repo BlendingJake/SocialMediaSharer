@@ -55,6 +55,7 @@ function sms_general_enqueue() {
 function sms_frontend_enqueue() {
     sms_general_enqueue();
     wp_enqueue_style("sms_frontend_style", plugins_url("/css/frontend_stylesheet.css", __FILE__));
+    wp_enqueue_script("sms_default_platforms_js", plugins_url('/javascript/default_platforms.js', __FILE__));
 
     $styles = sms_get_option(REQUIRED_STYLES);
     $scripts = sms_get_option(REQUIRED_SCRIPTS);

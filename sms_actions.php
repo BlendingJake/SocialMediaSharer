@@ -48,7 +48,7 @@ function sms_facebook_include_api() {
            $.ajax({cache:true});
            $.getScript('//connect.facebook.net/en_US/sdk.js', function() {
                FB.init({
-                   appId: '{114801585966021}',
+                   appId: '114801585966021',
                    version: 'v2.8'
                });
                $('#loginbutton,#feedbutton').removeAttr('disabled');
