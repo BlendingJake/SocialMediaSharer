@@ -15,14 +15,17 @@ define("OPTIONS", "sms_options");
 define("REGISTERED_OPTIONS", "registered_options");
 define("OPTION_PRIORITIES", "option_priorities");
 
-
-$sms_options = [
-    'registered-options' => [],
-    'options-priority' => []
-];
-
 function sms_activation() {
-    global $sms_options;
+    $sms_options = [
+        // basic settings
+        'name' => 'Social Media Sharer',
+        'version' => [0, 0, 1],
+        'enqueue_font_awesome' => true,
+
+        // registered options
+        REGISTERED_OPTIONS => [],
+        OPTION_PRIORITIES => []
+    ];
 
     add_option(OPTIONS, $sms_options);
 }
@@ -31,11 +34,18 @@ function sms_deactivation() {
     delete_option(OPTIONS);
 }
 
+function sms_general_enqueue() {
+    if (sms_get_option('enqueue_font_awesome', true))
+        wp_enqueue_script('font-awesome', "https://use.fontawesome.com/c8a1fa0026.js");
+}
+
 function sms_frontend_enqueue() {
+    sms_general_enqueue();
     wp_enqueue_style("sms_frontend_style", plugins_url("/css/frontend_stylesheet.css", __FILE__));
 }
 
 function sms_backend_enqueue() {
+    sms_general_enqueue();
     wp_enqueue_style("sms_backend_style", plugins_url("/css/backend_stylesheet.css", __FILE__));
 }
 
@@ -54,7 +64,6 @@ add_action("wp_enqueue_scripts", "sms_frontend_enqueue");
 add_action("admin_enqueue_scripts", "sms_backend_enqueue");
 
 // panel
-add_action("admin_init", "sms_menu_fields");
 add_action("admin_menu", "sms_add_menu");
 
 // hooks
