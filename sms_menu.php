@@ -4,7 +4,7 @@ function sms_menu() {
     ?>
     <div class="sms-menu-outer>">
         <header class="sms-menu-header">
-            <h1><?php echo sms_get_title(); ?></h1>
+            <h1><?php echo sms_get_name(); ?></h1>
         </header>
 
         <div class="sms-fields-outer">
@@ -15,6 +15,9 @@ function sms_menu() {
 }
 
 function sms_save_fields() {
+    // general settings
+
+    // registered options saving
     $options = sms_get_option(REGISTERED_OPTIONS, []);
 
     foreach ($options as $option) {
@@ -26,17 +29,14 @@ function sms_save_fields() {
 function sms_display_fields() {
     $options = sms_get_option(REGISTERED_OPTIONS, []);
 
-    foreach ($options as $option) {
+    foreach ($options as $name=>$option) {
         ?>
         <div class="sms-option-outer">
             <header class="sms-option-header">
                 <a class="sms-icon">
-                    <?php if ($option['is_icon_url'] == true) : ?>
-                        <img src="<?php echo $option['icon']; ?>">
-                    <?php else: ?>
-                        <i class="fa fa-<?php echo $option['icon']; ?>" aria-hidden="true"></i>
-                    <?php endif; ?>
+                    <?php sms_the_icon($option['icon'], $option['is_icon_url']); ?>
                 </a>
+                <a class="sms-option-name"><?php echo ucwords($name); ?></a>
             </header>
 
             <div class="sms-option-fields">
