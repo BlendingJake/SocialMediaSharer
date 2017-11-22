@@ -15,7 +15,7 @@ function openTwitterDialog(self, event) {
     var top = (window.innerHeight - height) / 2 + window.screenTop;
 
     window.open(
-        self.href,
+        $(self).attr("href"),
         "Twitter",
         'toolbar=no,' +
         'status=no,' +

@@ -143,13 +143,15 @@ function sms_generate_frontend() {
             <?php if ($ops['display']) :
                 do_action($ops['display']);
             else : ?>
-                <a class="sms-platform"
+                <span class="<?php echo (sms_get_option('icon_only') ? "sms-platform-icon-only" : "sms-platform");?>"
                    onclick="<?php if (isset($ops['onclick'])) {echo $ops['onclick'];}?>"
+                   id="<?php echo preg_replace("/[^-a-zA-Z0-9_]/", "", $name);?>"
                     <?php echo sms_determine_href_tag($ops);
                     if (isset($ops['tag_extras'])) {echo " " . $ops['tag_extras'];}?>
                 >
                     <?php sms_the_icon($ops['icon'], $ops['is_icon_url']); ?>
-                </a>
+                    <a><?php echo (sms_get_option('icon_only') ? "" : ucwords($name)); ?></a>
+                </span>
             <?php endif; ?>
         <?php endforeach; ?>
     </div>

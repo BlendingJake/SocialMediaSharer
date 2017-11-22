@@ -70,8 +70,10 @@ function sms_twitter_generate_href() {
 function sms_twitter_display_panel() {
     $fields = sms_get_option_fields("twitter");
     ?>
-    <label for="twitter-message">Twitter Message</label>
-    <textarea name="twitter-message" id="twitter-message" rows="4" cols="50"><?php echo $fields['message'];?></textarea>
+    <p>
+        <label for="twitter-message">Twitter Message</label><br>
+        <textarea name="twitter-message" id="twitter-message" rows="4" cols="50"><?php echo $fields['message'];?></textarea>
+    </p>
     <?php
 }
 function sms_twitter_save_panel() {

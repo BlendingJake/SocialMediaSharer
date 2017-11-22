@@ -1,0 +1,30 @@
+.sms-outer {
+    text-align: center;
+    padding: 10px;
+}
+.sms-outer .sms-platform {
+    margin: 0 5px;
+    font-size: 16px;
+    padding: 8px 10px;
+    border-radius: 4px;
+}
+.sms-outer .sms-platform i {
+    font-size: 20px;
+    margin-right: 2px;
+}
+
+#facebook {
+    background-color: #4267B2;
+    color: white;
+}
+#facebook a {
+    color: white;
+}
+
+#twitter {
+    background-color: #1DA1F2;
+    color: white;
+}
+#twitter a {
+    color: white;
+}

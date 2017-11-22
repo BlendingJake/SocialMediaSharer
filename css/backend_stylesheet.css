@@ -1,0 +1,28 @@
+.sms-fields-group {
+    margin-bottom: 50px;
+}
+
+.sms-option-outer {
+    padding: 20px 5px;
+    margin-bottom: 10px;
+
+    border-radius: 5px;
+    border: 1px solid lightgray;
+
+    -webkit-box-shadow: inset -1px -1px 3px lightgray;
+    -moz-box-shadow: inset -1px -1px 3px lightgray;
+    box-shadow: inset -1px -1px 3px lightgray;
+}
+.sms-fields-outer label {
+    font-size: 14px;
+}
+
+.sms-option-header a {
+    font-size: 16px;
+    color: black;
+}
+.sms-option-fields textarea {
+    width: 100%;
+    margin-top: 5px;
+    font-size: 14px;
+}
