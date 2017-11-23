@@ -34,11 +34,10 @@ function sms_set_option_priority($name, $priority) {
 // default option actions
 // DEFAULT
 function sms_default_meta() {
-    global $post;
     ?>
     <meta property="og:image" content="<?php do_action("sms_the_image");?>" />
     <meta name="og:title" content="<?php echo get_bloginfo("name");?>" />
-    <meta name="og:description" content="<?php if ($post) {echo substr(get_the_excerpt($post->ID), 0, 200);}?>" />
+    <meta name="og:description" content="<?php do_action("sms_the_description");?>" />
     <?php
 }
 
@@ -105,8 +104,6 @@ function sms_twitter_save_panel() {
     sms_update_option_fields('twitter', $fields);
 }
 function sms_twitter_meta() {
-    global $wp;
-    global $post;
     ?>
     <meta name="twitter:card" content="photo" />
     <meta name="twitter:site" content="@<?php echo sms_get_option_field('twitter', 'username', '');?>" />

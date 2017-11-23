@@ -85,6 +85,9 @@ add_action("sms_generate_frontend", "sms_generate_frontend");
 if (!has_action("sms_the_image"))  // only load if needed
     add_action("sms_the_image", "sms_default_the_image");
 
+if (!has_action("sms_the_description"))
+    add_action("sms_the_description", "sms_default_the_description");
+
 // enqueue
 add_action("wp_enqueue_scripts", "sms_frontend_enqueue");
 add_action("admin_enqueue_scripts", "sms_backend_enqueue");

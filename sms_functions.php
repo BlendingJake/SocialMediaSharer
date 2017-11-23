@@ -164,11 +164,25 @@ function sms_clean_for_id($text) {
     return preg_replace("/[^-a-zA-Z0-9_]/", "", $text);
 }
 
-// get post featured image
+// HOOKS FOR DEALING WITH META TAGS
 function sms_default_the_image() {
     $featured_id = get_post_thumbnail_id();
     if ($featured_id !== "")
         echo wp_get_attachment_image_src($featured_id, 'full')[0];
     else
+        echo "";
+}
+
+function sms_default_the_description() {
+    global $post;
+
+    if ($post) {
+        if ($post->post_excerpt)
+            echo trim(substr($post->post_excerpt, 0, 200));
+        elseif ($post->post_content)
+            echo trim(wp_strip_all_tags(strip_shortcodes($post->post_content)));
+        else
+            echo "";
+    } else
         echo "";
 }
