@@ -116,11 +116,28 @@ function sms_add_default_options() {
                 'is_icon_url' => false,
                 'href_action' => 'twitter_generate_href',
                 'onclick' => 'openWindowDialog(this, event, "Twitter")',
-                'tag_extras' => 'target="_blank"'
+                'tag_extras' => ''
             ],
             'fields' => [
                 'message' => '',
                 'username' => ''
+            ],
+            'priority' => -1,
+            'misc' => [],
+        ],
+        "google+" => [
+            'options' => [
+                'icon' => 'google-plus-official',
+                'display_panel' => '',
+                'save_panel' => '',
+                'display' => '',
+                'is_icon_url' => false,
+                'href_action' => 'google_plus_generate_href',
+                'onclick' => 'openWindowDialog(this, event, \'Google+\')',
+                'tag_extras' => ''
+            ],
+            'fields' => [
+                'message' => '',
             ],
             'priority' => -1,
             'misc' => [],

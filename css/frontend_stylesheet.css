@@ -5,15 +5,18 @@
 
 /* Icon and Text */
 .sms-platform {
-    margin: 0 5px;
+    margin: 10px 5px 0 5px;
     font-size: 16px;
     padding: 8px 10px;
     border-radius: 4px;
+    display: inline-block;
 }
 .sms-platform i {
     font-size: 20px;
     margin-right: 2px;
 }
+
+/* FACEBOOK */
 .sms-platform#facebook {
     background-color: #4267B2;
 }
@@ -24,6 +27,8 @@
     color: white;
     text-decoration: none;
 }
+
+/* TWITTER */
 .sms-platform#twitter {
     background-color: #1DA1F2;
 }
@@ -31,6 +36,18 @@
     color: white;
 }
 .sms-platform#twitter a, .sms-platform#twitter a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* GOOGLE PLUS */
+.sms-platform#google {
+    background-color: #DB4437;
+}
+.sms-platform#google i {
+    color: white;
+}
+.sms-platform#google a, .sms-platform#google a:hover {
     color: white;
     text-decoration: none;
 }
@@ -45,4 +62,7 @@
 }
 .sms-platform-icon-only#twitter i{
     color: #1DA1F2;
+}
+.sms-platform-icon-only#google i {
+    color: #DB4437;
 }

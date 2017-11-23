@@ -56,14 +56,14 @@ function sms_facebook_display() {
 function sms_facebook_include_api() {
     ?>
     <script>
-        $(document).ready(function() {
-           $.ajax({cache:true});
-           $.getScript('//connect.facebook.net/en_US/sdk.js', function() {
+        jQuery(document).ready(function() {
+            jQuery.ajax({cache:true});
+            jQuery.getScript('//connect.facebook.net/en_US/sdk.js', function() {
                FB.init({
                    appId: '114801585966021',
                    version: 'v2.8'
                });
-               $('#loginbutton,#feedbutton').removeAttr('disabled');
+                jQuery('#loginbutton,#feedbutton').removeAttr('disabled');
            });
         });
     </script>
@@ -114,3 +114,13 @@ add_action('twitter_generate_href', 'sms_twitter_generate_href');
 add_action('twitter_display_panel', 'sms_twitter_display_panel');
 add_action('twitter_save_panel', 'sms_twitter_save_panel');
 add_action('wp_head', 'sms_twitter_meta');
+
+// GOOGLE PLUS
+function sms_google_plus_generate_href() {
+    $url = get_the_permalink();
+    $base_url = "https://plus.google.com/share?url=";
+
+    echo $base_url . "&url=" . urlencode($url);
+}
+
+add_action('google_plus_generate_href', 'sms_google_plus_generate_href');
