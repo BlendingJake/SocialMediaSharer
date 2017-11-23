@@ -32,6 +32,18 @@ function sms_set_option_priority($name, $priority) {
 }
 
 // default option actions
+// DEFAULT
+function sms_default_meta() {
+    global $post;
+    ?>
+    <meta property="og:image" content="<?php do_action("sms_the_image");?>" />
+    <meta name="og:title" content="<?php echo get_bloginfo("name");?>" />
+    <meta name="og:description" content="<?php if ($post) {echo substr(get_the_excerpt($post->ID), 0, 200);}?>" />
+    <?php
+}
+
+add_action("wp_head", "sms_default_meta");
+
 // FACEBOOK
 function sms_facebook_display_panel() {
     return;
@@ -41,9 +53,6 @@ function sms_facebook_save_panel() {
 }
 function sms_facebook_display() {
     return;
-}
-function sms_facebook_meta() {
-    ?><meta property="og:image" content="<?php do_action("sms_the_image");?>" /><?php
 }
 function sms_facebook_include_api() {
     ?>
@@ -63,7 +72,6 @@ function sms_facebook_include_api() {
 }
 
 add_action('wp_head', 'sms_facebook_include_api');
-add_action('wp_head', 'sms_facebook_meta', 1);
 
 // TWITTER
 function sms_twitter_generate_href() {
@@ -102,14 +110,10 @@ function sms_twitter_meta() {
     ?>
     <meta name="twitter:card" content="photo" />
     <meta name="twitter:site" content="@<?php echo sms_get_option_field('twitter', 'username', '');?>" />
-    <meta name="twitter:title" content="<?php echo get_bloginfo("name");?>" />
-    <meta name="twitter:description" content="<?php if ($post) {echo get_the_excerpt($post->ID);}?>" />
-    <meta name="twitter:url" content="<?php echo home_url($wp->request);?>" />
-    <meta property="twitter:image" content="<?php do_action("sms_the_image");?>" />
     <?php
 }
 
 add_action('twitter_generate_href', 'sms_twitter_generate_href');
 add_action('twitter_display_panel', 'sms_twitter_display_panel');
 add_action('twitter_save_panel', 'sms_twitter_save_panel');
-add_action('wp_head', 'sms_twitter_meta', 1);
+add_action('wp_head', 'sms_twitter_meta');
