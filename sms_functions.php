@@ -97,8 +97,8 @@ function sms_add_default_options() {
         "facebook" => [
             'options' => [
                 'icon' => 'facebook-official',
-                'display_panel' => 'facebook_display_panel',
-                'save_panel' => 'facebook_save_panel',
+                'display_panel' => 'sms_facebook_display_panel',
+                'save_panel' => 'sms_facebook_save_panel',
                 'display' => '',
                 'is_icon_url' => false,
                 'onclick' => 'openFacebookDialog()'
@@ -110,11 +110,11 @@ function sms_add_default_options() {
         "twitter" => [
             'options' => [
                 'icon' => 'twitter',
-                'display_panel' => 'twitter_display_panel',
-                'save_panel' => 'twitter_save_panel',
+                'display_panel' => 'sms_twitter_display_panel',
+                'save_panel' => 'sms_twitter_save_panel',
                 'display' => '',
                 'is_icon_url' => false,
-                'href_action' => 'twitter_generate_href',
+                'href_action' => 'sms_twitter_generate_href',
                 'onclick' => 'openWindowDialog(this, event, \'Twitter\')',
                 'tag_extras' => ''
             ],
@@ -132,7 +132,7 @@ function sms_add_default_options() {
                 'save_panel' => '',
                 'display' => '',
                 'is_icon_url' => false,
-                'href_action' => 'google_plus_generate_href',
+                'href_action' => 'sms_google_plus_generate_href',
                 'onclick' => 'openWindowDialog(this, event, \'Google+\', 400, 500)',
                 'tag_extras' => ''
             ],

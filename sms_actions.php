@@ -33,26 +33,22 @@ function sms_set_option_priority($name, $priority) {
 
 // default option actions
 // DEFAULT
+function sms_the_title() {
+    echo get_bloginfo('name');
+}
 function sms_default_meta() {
     ?>
     <meta property="og:image" content="<?php do_action("sms_the_image");?>" />
-    <meta name="og:title" content="<?php echo get_bloginfo("name");?>" />
+    <meta name="og:title" content="<?php do_action('sms_the_title');?>" />
     <meta name="og:description" content="<?php do_action("sms_the_description");?>" />
     <?php
 }
 
 add_action("wp_head", "sms_default_meta");
+if (!has_action('sms_the_title'))
+    add_action('sms_the_title', 'sms_the_title');
 
 // FACEBOOK
-function sms_facebook_display_panel() {
-    return;
-}
-function sms_facebook_save_panel() {
-    return;
-}
-function sms_facebook_display() {
-    return;
-}
 function sms_facebook_include_api() {
     ?>
     <script>
@@ -106,13 +102,19 @@ function sms_twitter_save_panel() {
 function sms_twitter_meta() {
     ?>
     <meta name="twitter:card" content="photo" />
-    <meta name="twitter:site" content="@<?php echo sms_get_option_field('twitter', 'username', '');?>" />
+    <meta name="twitter:site" content="<?php do_action('sms_the_twitter_site_username');?>" />
+    <meta name="twitter:creator" content="<?php do_action('sms_the_twitter_creator_username');?>" />
     <?php
 }
+function sms_twitter_site_username() {
+    echo '@' . sms_get_option_field('twitter', 'username', '');
+}
 
-add_action('twitter_generate_href', 'sms_twitter_generate_href');
-add_action('twitter_display_panel', 'sms_twitter_display_panel');
-add_action('twitter_save_panel', 'sms_twitter_save_panel');
+add_action('sms_twitter_generate_href', 'sms_twitter_generate_href');
+add_action('sms_twitter_display_panel', 'sms_twitter_display_panel');
+add_action('sms_twitter_save_panel', 'sms_twitter_save_panel');
+if (!has_action('sms_the_twitter_site_username'))
+    add_action('sms_the_twitter_site_username', 'sms_twitter_site_username');
 add_action('wp_head', 'sms_twitter_meta');
 
 // GOOGLE PLUS
@@ -123,4 +125,4 @@ function sms_google_plus_generate_href() {
     echo $base_url . urlencode($url);
 }
 
-add_action('google_plus_generate_href', 'sms_google_plus_generate_href');
+add_action('sms_google_plus_generate_href', 'sms_google_plus_generate_href');
