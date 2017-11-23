@@ -137,7 +137,7 @@ function sms_add_default_options() {
                 'tag_extras' => ''
             ],
             'fields' => [
-                'message' => '',
+                'message' => 'Check out this neat article!',
             ],
             'priority' => -1,
             'misc' => [],
