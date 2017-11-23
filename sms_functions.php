@@ -1,4 +1,6 @@
 <?php
+// TODO: Add support/usage for priority, maybe frontend support
+
 // get/update options
 function sms_get_option($name, $default_value=[]) {
     $options = get_option(OPTIONS, []);

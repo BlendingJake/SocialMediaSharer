@@ -10,6 +10,15 @@
     padding: 8px 10px;
     border-radius: 4px;
     display: inline-block;
+
+    -webkit-transition: border-radius 0.1s;
+    -moz-transition: border-radius 0.1s;
+    -ms-transition: border-radius 0.1s;
+    -o-transition: border-radius 0.1s;
+    transition: border-radius 0.1s;
+}
+.sms-platform:hover {
+    border-radius: 10px;
 }
 .sms-platform i {
     font-size: 20px;

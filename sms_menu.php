@@ -3,7 +3,7 @@ function sms_menu() {
     sms_save_fields();
     ?>
     <form class="sms-form" action="" method="POST">
-        <div class="sms-menu-outer>">
+        <div class="sms-menu-outer">
             <header class="sms-menu-header">
                 <h1><?php echo sms_get_name(); ?></h1>
             </header>
@@ -13,7 +13,7 @@ function sms_menu() {
             </div>
         </div>
 
-        <button type="submit">Save Changes</button>
+        <button type="submit" class="button button-primary">Save Changes</button>
     </form>
     <?php
 }
