@@ -21,20 +21,23 @@ function sms_menu() {
 function sms_save_fields() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // general settings
-        sms_update_option('enqueue_font_awesome', (isset($_POST['enqueue_font_awesome']) ? true : false));
-        sms_update_option('enqueue_jquery', (isset($_POST['enqueue_jquery']) ? true : false));
-        sms_update_option('icon_only', (isset($_POST['icon_only']) ? true : false));
+        sms_update_option('enqueue_font_awesome', isset($_POST['enqueue_font_awesome']));
+        sms_update_option('enqueue_jquery', isset($_POST['enqueue_jquery']));
+        sms_update_option('icon_only', isset($_POST['icon_only']));
 
         // registered options saving
         $options = sms_get_option(REGISTERED_OPTIONS, []);
 
-        foreach ($options as $name => $option) {
-            $option['active'] = (isset($_POST[$name]) ? true : false);
+        foreach ($options as $name=>$option) {
+            $option['active'] = isset($_POST[sms_clean_for_id($name)]);
 
             if (has_action($option['save_panel']))
                 do_action($option['save_panel']);
+
+            $options[$name] = $option;
         }
 
+        var_dump($options);
         sms_update_option(REGISTERED_OPTIONS, $options);
     }
 }

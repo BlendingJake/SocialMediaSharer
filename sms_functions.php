@@ -140,18 +140,20 @@ function sms_generate_frontend() {
     <div class="sms-outer">
         <?php $options = sms_get_option(REGISTERED_OPTIONS);
         foreach($options as $name=>$ops) : ?>
-            <?php if ($ops['display']) :
-                do_action($ops['display']);
-            else : ?>
-                <span class="<?php echo (sms_get_option('icon_only') ? "sms-platform-icon-only" : "sms-platform");?>"
-                   onclick="<?php if (isset($ops['onclick'])) {echo $ops['onclick'];}?>"
-                   id="<?php echo preg_replace("/[^-a-zA-Z0-9_]/", "", $name);?>"
-                    <?php echo sms_determine_href_tag($ops);
-                    if (isset($ops['tag_extras'])) {echo " " . $ops['tag_extras'];}?>
-                >
-                    <?php sms_the_icon($ops['icon'], $ops['is_icon_url']); ?>
-                    <a><?php echo (sms_get_option('icon_only') ? "" : ucwords($name)); ?></a>
-                </span>
+            <?php if ($ops['active']) : ?>
+                <?php if ($ops['display']) :
+                    do_action($ops['display']);
+                else : ?>
+                    <span class="<?php echo (sms_get_option('icon_only') ? "sms-platform-icon-only" : "sms-platform");?>"
+                       onclick="<?php if (isset($ops['onclick'])) {echo $ops['onclick'];}?>"
+                       id="<?php echo sms_clean_for_id($name);?>"
+                        <?php echo sms_determine_href_tag($ops);
+                        if (isset($ops['tag_extras'])) {echo " " . $ops['tag_extras'];}?>
+                    >
+                        <?php sms_the_icon($ops['icon'], $ops['is_icon_url']); ?>
+                        <a><?php echo (sms_get_option('icon_only') ? "" : ucwords($name)); ?></a>
+                    </span>
+                <?php endif; ?>
             <?php endif; ?>
         <?php endforeach; ?>
     </div>
