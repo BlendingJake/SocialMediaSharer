@@ -16,18 +16,23 @@
 }
 .sms-platform#facebook {
     background-color: #4267B2;
+}
+.sms-platform#facebook i {
     color: white;
 }
-.sms-platform#facebook a {
+.sms-platform#facebook a, .sms-platform#facebook a:hover {
     color: white;
+    text-decoration: none;
 }
-
 .sms-platform#twitter {
     background-color: #1DA1F2;
+}
+.sms-platform#twitter i {
     color: white;
 }
-.sms-platform#twitter a {
+.sms-platform#twitter a, .sms-platform#twitter a:hover {
     color: white;
+    text-decoration: none;
 }
 
 /* Icon Only */
@@ -35,9 +40,9 @@
     font-size: 35px;
     margin: 0 5px;
 }
-.sms-platform-icon-only#facebook {
+.sms-platform-icon-only#facebook i{
     color: #4267B2;
 }
-.sms-platform-icon-only#twitter {
+.sms-platform-icon-only#twitter i{
     color: #1DA1F2;
 }

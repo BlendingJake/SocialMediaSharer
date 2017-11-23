@@ -59,6 +59,8 @@ function sms_facebook_include_api() {
     <?php
 }
 
+add_action('wp_head', 'sms_facebook_include_api');
+
 // TWITTER
 function sms_twitter_generate_href() {
     $message = sms_get_option_field('twitter', 'message');

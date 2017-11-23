@@ -106,7 +106,6 @@ function sms_add_default_options() {
             'fields' => [],
             'priority' => -1,
             'misc' => [],
-            'wp_head' => 'sms_facebook_include_api'
         ],
         "twitter" => [
             'options' => [
@@ -128,9 +127,6 @@ function sms_add_default_options() {
     foreach ($default_options as $name=>$ops) {
         do_action('register_social_media_option', $name, $ops['options'], $ops['fields'], $ops['priority'],
             $ops['misc']);
-
-        if (isset($ops['wp_head']))
-            add_action('wp_head', $ops['wp_head']);
     }
 }
 
