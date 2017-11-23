@@ -80,6 +80,7 @@ function sms_add_menu() {
 // internal
 add_action("register_social_media_option", "sms_register_social_option", 20, 5);
 add_action("set_social_media_priority", "sms_set_option_priority", 20, 2);
+add_action("sms_generate_frontend", "sms_generate_frontend");
 
 // enqueue
 add_action("wp_enqueue_scripts", "sms_frontend_enqueue");

@@ -37,7 +37,6 @@ function sms_save_fields() {
             $options[$name] = $option;
         }
 
-        var_dump($options);
         sms_update_option(REGISTERED_OPTIONS, $options);
     }
 }
