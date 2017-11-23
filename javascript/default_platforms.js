@@ -6,7 +6,7 @@ function openFacebookDialog() {
     );
 }
 
-function openTwitterDialog(self, event) {
+function openWindowDialog(self, event, title) {
     event.preventDefault();
 
     var width = 500;
@@ -16,7 +16,7 @@ function openTwitterDialog(self, event) {
 
     window.open(
         jQuery(self).attr("href"),
-        "Twitter",
+        title,
         'toolbar=no,' +
         'status=no,' +
         'menubar=no,' +

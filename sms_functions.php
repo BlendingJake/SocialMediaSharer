@@ -115,7 +115,7 @@ function sms_add_default_options() {
                 'display' => '',
                 'is_icon_url' => false,
                 'href_action' => 'twitter_generate_href',
-                'onclick' => 'openTwitterDialog(this, event)',
+                'onclick' => 'openWindowDialog(this, event, "Twitter")',
                 'tag_extras' => 'target="_blank"'
             ],
             'fields' => [
