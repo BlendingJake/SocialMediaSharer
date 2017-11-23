@@ -177,11 +177,15 @@ function sms_default_the_description() {
     global $post;
 
     if ($post) {
-        if ($post->post_excerpt)
-            echo trim(substr($post->post_excerpt, 0, 200));
-        elseif ($post->post_content)
-            echo trim(wp_strip_all_tags(strip_shortcodes($post->post_content)));
-        else
+        if ($post->post_excerpt) {
+            $str = $post->post_excerpt;
+            $str = strlen($str) > 200 ? substr($str, 0, 197)."..." : $str;
+            echo trim($str);
+        } elseif ($post->post_content) {
+            $str = addslashes(wp_strip_all_tags(strip_shortcodes($post->post_content))); // clean up content
+            $str = strlen($str) > 200 ? substr($str, 0, 197)."..." : $str;
+            echo trim($str);
+        } else
             echo "";
     } else
         echo "";
