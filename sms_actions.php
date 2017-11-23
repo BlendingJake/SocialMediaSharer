@@ -100,13 +100,14 @@ function sms_twitter_save_panel() {
 }
 function sms_twitter_meta() {
     global $wp;
+    global $post;
     ?>
     <meta name="twitter:card" content="photo" />
-    <meta name="twitter:site" content="@wickedpgh" />
+    <meta name="twitter:site" content="@<?php echo sms_get_option_field('twitter', 'username', '');?>" />
     <meta name="twitter:title" content="<?php echo get_bloginfo("name");?>" />
-    <meta name="twitter:description" content="<?php echo get_bloginfo("description");?>" />
+    <meta name="twitter:description" content="<?php if ($post) {echo get_the_excerpt($post->ID);}?>" />
     <meta name="twitter:url" content="<?php echo home_url($wp->request);?>" />
-" />
+
     <?php
     if (($src=sms_get_post_image()) !== null) : ?>
         <meta property="twitter:image" content="<?php echo $src;?>" />

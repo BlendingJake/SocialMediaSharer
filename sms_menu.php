@@ -67,8 +67,8 @@ function sms_display_fields() {
         <div class="sms-option-outer">
             <div class="sms-option-header" id="<?php echo sms_clean_for_id($name);?>"
                  onclick="/* fancy version to keep click checkbox from working*/
-                         if (!$(event.target).is('input')){
-                             $('#<?php echo sms_clean_for_id($name) . "_fields";?>').toggle();
+                         if (!jQuery(event.target).is('input')){
+                            jQuery('#<?php echo sms_clean_for_id($name) . "_fields";?>').toggle();
                          }">
 
                 <input type="checkbox"  name="<?php echo sms_clean_for_id($name);?>"
