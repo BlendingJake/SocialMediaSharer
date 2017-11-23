@@ -160,3 +160,12 @@ function sms_generate_frontend() {
 function sms_clean_for_id($text) {
     return preg_replace("/[^-a-zA-Z0-9_]/", "", $text);
 }
+
+// get post featured image
+function sms_get_post_image() {
+    $featured_id = get_post_thumbnail_id();
+    if ($featured_id !== "")
+        return wp_get_attachment_image_src($featured_id, 'full')[0];
+
+    return null;
+}

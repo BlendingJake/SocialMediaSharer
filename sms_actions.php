@@ -42,6 +42,11 @@ function sms_facebook_save_panel() {
 function sms_facebook_display() {
     return;
 }
+function sms_facebook_meta() {
+    if (($src=sms_get_post_image()) !== null) : ?>
+        <meta property="og:image" content="<?php echo $src;?>">
+    <?php endif;
+}
 function sms_facebook_include_api() {
     ?>
     <script>
@@ -60,6 +65,7 @@ function sms_facebook_include_api() {
 }
 
 add_action('wp_head', 'sms_facebook_include_api');
+add_action('wp_head', 'sms_facebook_meta', 1);
 
 // TWITTER
 function sms_twitter_generate_href() {
@@ -86,7 +92,13 @@ function sms_twitter_save_panel() {
 
     sms_update_option_fields('twitter', $fields);
 }
+function sms_twitter_meta() {
+    if (($src=sms_get_post_image()) !== null) : ?>
+        <meta property="twitter:image" content="<?php echo $src;?>">
+    <?php endif;
+}
 
 add_action('twitter_generate_href', 'sms_twitter_generate_href');
 add_action('twitter_display_panel', 'sms_twitter_display_panel');
 add_action('twitter_save_panel', 'sms_twitter_save_panel');
+add_action('wp_head', 'sms_twitter_meta', 1);
