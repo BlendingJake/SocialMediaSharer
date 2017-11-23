@@ -165,10 +165,10 @@ function sms_clean_for_id($text) {
 }
 
 // get post featured image
-function sms_get_post_image() {
+function sms_default_get_image_src() {
     $featured_id = get_post_thumbnail_id();
     if ($featured_id !== "")
-        return wp_get_attachment_image_src($featured_id, 'full')[0];
-
-    return null;
+        echo wp_get_attachment_image_src($featured_id, 'full')[0];
+    else
+        return "";
 }

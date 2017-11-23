@@ -43,9 +43,7 @@ function sms_facebook_display() {
     return;
 }
 function sms_facebook_meta() {
-    if (($src=sms_get_post_image()) !== null) : ?>
-        <meta property="og:image" content="<?php echo $src;?>" />
-    <?php endif;
+    ?><meta property="og:image" content="<?php do_action("sms_the_image");?>" /><?php
 }
 function sms_facebook_include_api() {
     ?>
@@ -107,11 +105,8 @@ function sms_twitter_meta() {
     <meta name="twitter:title" content="<?php echo get_bloginfo("name");?>" />
     <meta name="twitter:description" content="<?php if ($post) {echo get_the_excerpt($post->ID);}?>" />
     <meta name="twitter:url" content="<?php echo home_url($wp->request);?>" />
-
+    <meta property="twitter:image" content="<?php do_action("sms_the_image");?>" />
     <?php
-    if (($src=sms_get_post_image()) !== null) : ?>
-        <meta property="twitter:image" content="<?php echo $src;?>" />
-    <?php endif;
 }
 
 add_action('twitter_generate_href', 'sms_twitter_generate_href');
