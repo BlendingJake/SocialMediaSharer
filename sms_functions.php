@@ -118,7 +118,10 @@ function sms_add_default_options() {
                 'onclick' => 'openTwitterDialog(this, event)',
                 'tag_extras' => 'target="_blank"'
             ],
-            'fields' => ['message' => ''],
+            'fields' => [
+                'message' => '',
+                'username' => ''
+            ],
             'priority' => -1,
             'misc' => [],
         ]

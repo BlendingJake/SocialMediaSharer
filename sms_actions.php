@@ -44,7 +44,7 @@ function sms_facebook_display() {
 }
 function sms_facebook_meta() {
     if (($src=sms_get_post_image()) !== null) : ?>
-        <meta property="og:image" content="<?php echo $src;?>">
+        <meta property="og:image" content="<?php echo $src;?>" />
     <?php endif;
 }
 function sms_facebook_include_api() {
@@ -73,11 +73,15 @@ function sms_twitter_generate_href() {
     $url = get_the_permalink();
     $base_url = "https://twitter.com/intent/tweet?text=";
 
-    echo $base_url . urlencode($message . " " . $url);
+    echo $base_url . urlencode($message) . "&url=" . urlencode($url);
 }
 function sms_twitter_display_panel() {
     $fields = sms_get_option_fields("twitter");
     ?>
+    <p>
+        <label for="twitter-username">Twitter Username</label>
+        <input type='text' name="twitter-username" id="twitter-username" value="<?php echo $fields['username'];?>">
+    </p>
     <p>
         <label for="twitter-message">Twitter Message</label><br>
         <textarea name="twitter-message" id="twitter-message" rows="4" cols="50"><?php echo $fields['message'];?></textarea>
@@ -89,12 +93,23 @@ function sms_twitter_save_panel() {
     if (isset($_POST['twitter-message'])) {
         $fields['message'] = $_POST['twitter-message'];
     }
+    if (isset($_POST['twitter-username']))
+        $fields['username'] = $_POST['twitter-username'];
 
     sms_update_option_fields('twitter', $fields);
 }
 function sms_twitter_meta() {
+    global $wp;
+    ?>
+    <meta name="twitter:card" content="photo" />
+    <meta name="twitter:site" content="@wickedpgh" />
+    <meta name="twitter:title" content="<?php echo get_bloginfo("name");?>" />
+    <meta name="twitter:description" content="<?php echo get_bloginfo("description");?>" />
+    <meta name="twitter:url" content="<?php echo home_url($wp->request);?>" />
+" />
+    <?php
     if (($src=sms_get_post_image()) !== null) : ?>
-        <meta property="twitter:image" content="<?php echo $src;?>">
+        <meta property="twitter:image" content="<?php echo $src;?>" />
     <?php endif;
 }
 
