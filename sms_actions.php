@@ -2,7 +2,7 @@
 function sms_register_social_option($name, $default_options, $fields, $priority=-1, $misc=[]) {
     $options = sms_get_option(REGISTERED_OPTIONS, []);
 
-    $new_options = array_merge($default_options, ['active'=>false]);
+    $new_options = array_merge($default_options, ['active'=>true]);
     $options[$name] = $new_options;
 
     sms_set_option_priority($name, $priority);
@@ -120,7 +120,7 @@ function sms_google_plus_generate_href() {
     $url = get_the_permalink();
     $base_url = "https://plus.google.com/share?url=";
 
-    echo $base_url . "&url=" . urlencode($url);
+    echo $base_url . urlencode($url);
 }
 
 add_action('google_plus_generate_href', 'sms_google_plus_generate_href');

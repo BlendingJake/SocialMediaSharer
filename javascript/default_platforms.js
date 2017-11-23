@@ -6,11 +6,9 @@ function openFacebookDialog() {
     );
 }
 
-function openWindowDialog(self, event, title) {
+function openWindowDialog(self, event, title, width=500, height=300) {
     event.preventDefault();
 
-    var width = 500;
-    var height = 300;
     var left = (window.innerWidth - width) / 2 + window.screenLeft;
     var top = (window.innerHeight - height) / 2 + window.screenTop;
 

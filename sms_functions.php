@@ -115,7 +115,7 @@ function sms_add_default_options() {
                 'display' => '',
                 'is_icon_url' => false,
                 'href_action' => 'twitter_generate_href',
-                'onclick' => 'openWindowDialog(this, event, "Twitter")',
+                'onclick' => 'openWindowDialog(this, event, \'Twitter\')',
                 'tag_extras' => ''
             ],
             'fields' => [
@@ -133,7 +133,7 @@ function sms_add_default_options() {
                 'display' => '',
                 'is_icon_url' => false,
                 'href_action' => 'google_plus_generate_href',
-                'onclick' => 'openWindowDialog(this, event, \'Google+\')',
+                'onclick' => 'openWindowDialog(this, event, \'Google+\', 400, 500)',
                 'tag_extras' => ''
             ],
             'fields' => [
