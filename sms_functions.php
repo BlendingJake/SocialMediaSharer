@@ -170,5 +170,5 @@ function sms_default_get_image_src() {
     if ($featured_id !== "")
         echo wp_get_attachment_image_src($featured_id, 'full')[0];
     else
-        return "";
+        echo "";
 }
