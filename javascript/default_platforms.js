@@ -9,8 +9,8 @@ function openFacebookDialog() {
 function openWindowDialog(self, event, title, width=500, height=300) {
     event.preventDefault();
 
-    var left = (window.innerWidth - width) / 2 + window.screenLeft;
-    var top = (window.innerHeight - height) / 2 + window.screenTop;
+    let left = (window.innerWidth - width) / 2 + window.screenLeft;
+    let top = (window.innerHeight - height) / 2 + window.screenTop;
 
     window.open(
         jQuery(self).attr("href"),
