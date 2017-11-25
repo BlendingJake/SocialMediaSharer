@@ -38,7 +38,7 @@ function sms_the_title() {
 }
 function sms_default_meta() {
     ?>
-    <meta property="og:image" content="<?php do_action("sms_the_image");?>" />
+    <meta name="og:image" content="<?php do_action("sms_the_image");?>" />
     <meta name="og:title" content="<?php do_action('sms_the_title');?>" />
     <meta name="og:description" content="<?php do_action("sms_the_description");?>" />
     <?php
