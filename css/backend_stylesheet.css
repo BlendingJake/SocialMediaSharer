@@ -7,7 +7,7 @@
 }
 
 .sms-option-outer {
-    padding: 20px 5px;
+    padding: 20px;
     margin-bottom: 10px;
 
     border-radius: 5px;
@@ -21,6 +21,9 @@
     font-size: 14px;
 }
 
+.sms-option-header input {
+    margin-right: 10px;
+}
 .sms-option-header a {
     font-size: 16px;
     color: black;
